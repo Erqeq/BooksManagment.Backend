@@ -15,7 +15,7 @@ public static class DependencyInjection
         services.AddDbContext<BooksContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-        services.AddDbContext<IBookRepository, BookRepository>();
+        services.AddScoped<IBookRepository, BookRepository>();
 
         return services;
     }
