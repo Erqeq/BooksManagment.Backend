@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
-public class BookRepository(BooksContext context) : IBookRepository
+public class BookRepository(AppDbContext context) : IBookRepository
 {
     public async Task<IEnumerable<Book>> GetBooksAsync()
     {

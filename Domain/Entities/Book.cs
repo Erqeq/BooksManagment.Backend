@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities;
 
-public class Book : Entity
+public class Book : BaseEntity
 {
     public string Title { get; set; }
     public string Author { get; set; }

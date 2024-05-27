@@ -12,7 +12,7 @@ public static class DependencyInjection
     public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services, 
         IConfiguration configuration)
     {
-        services.AddDbContext<BooksContext>(options =>
+        services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
         services.AddScoped<IBookRepository, BookRepository>();
