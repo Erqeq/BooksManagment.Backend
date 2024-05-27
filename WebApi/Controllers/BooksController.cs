@@ -1,6 +1,7 @@
 ﻿using Application.DTOs;
 using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace WebApi.Controllers;
 
@@ -61,11 +62,17 @@ public class BooksController : ControllerBase
             new { id = createdBook.Id }, createdBook);
     }
 
+    /// <summary>
+    /// Update a book
+    /// </summary>
+    /// <param name="id">Book Id</param>
+    /// <param name="bookDto">Body of a book</param>
+    /// <returns></returns>
     [HttpPut("{id}", Name = "UpdateBook")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> UpdateBook(int id, BookDto bookDto)
+    public async Task<IActionResult> UpdateBook(int id, [FromBody]BookDto bookDto)
     {
         if (id != bookDto.Id)
         {
@@ -80,8 +87,9 @@ public class BooksController : ControllerBase
 
         return NoContent();
     }
+
     /// <summary>
-    /// Delete a book by id.
+    /// Delete a book by id
     /// </summary>
     /// <param name="id">Book Id</param>
     [HttpDelete("{id}", Name = "DeleteBook")]

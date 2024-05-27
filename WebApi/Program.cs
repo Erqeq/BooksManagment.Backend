@@ -1,3 +1,4 @@
+using System.Reflection;
 using Application;
 using Infrastructure;
 
@@ -18,6 +19,10 @@ builder.Services.AddSwaggerGen(options =>
         Title = "Book Management API",
         Description = "API for managing books"
     });
+
+    var fileName = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+    var filePath = Path.Combine(AppContext.BaseDirectory, fileName);
+    options.IncludeXmlComments(filePath);
 });
 
 var app = builder.Build();
